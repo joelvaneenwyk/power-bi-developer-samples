@@ -5,8 +5,8 @@
 
 namespace UserOwnsData.Controllers
 {
-	using System.Net;
-	using System.Web.Mvc;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Net;
 	using UserOwnsData.Models;
 	using UserOwnsData.Services;
 

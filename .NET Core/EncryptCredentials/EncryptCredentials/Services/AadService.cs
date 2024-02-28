@@ -12,14 +12,8 @@ namespace EncryptCredentials.Services
 	using System.Linq;
 	using System.Security;
 
-	public class AadService
+	public class AadService(IOptions<AzureAd> azureAd)
 	{
-		private readonly IOptions<AzureAd> azureAd;
-
-		public AadService(IOptions<AzureAd> azureAd)  
-		{
-			this.azureAd = azureAd;
-		}
 
 		/// <summary>
 		/// Generates and returns Access token
@@ -27,8 +21,8 @@ namespace EncryptCredentials.Services
 		/// <returns>AAD token</returns>
 		public string GetAccessToken()
 		{
-			AuthenticationResult authenticationResult = null;
-			if (azureAd.Value.AuthenticationMode.Equals("masteruser", StringComparison.InvariantCultureIgnoreCase))
+			AuthenticationResult authenticationResult;
+			if (azureAd.Value.AuthenticationMode?.Equals("masteruser", StringComparison.InvariantCultureIgnoreCase) ?? false)
 			{
 				// Create a public client to authorize the app with the AAD app
 				IPublicClientApplication clientApp = PublicClientApplicationBuilder.Create(azureAd.Value.ClientId).WithAuthority(azureAd.Value.AuthorityUrl).Build();
@@ -40,8 +34,8 @@ namespace EncryptCredentials.Services
 				}
 				catch (MsalUiRequiredException)
 				{
-					SecureString password = new SecureString();
-					foreach (var key in azureAd.Value.PbiPassword)
+					SecureString password = new();
+					foreach (var key in azureAd.Value.PbiPassword ?? "")
 					{
 						password.AppendChar(key);
 					}
@@ -68,7 +62,7 @@ namespace EncryptCredentials.Services
 			return authenticationResult.AccessToken;
 		}
 
-		public string GetPowerBiApiUrl() {
+		public string? GetPowerBiApiUrl() {
 			return azureAd.Value.PowerBiApiUrl;
 		}
 	}

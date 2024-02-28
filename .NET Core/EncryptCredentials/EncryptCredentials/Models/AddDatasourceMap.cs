@@ -13,21 +13,21 @@ namespace EncryptCredentials.Models
 		public Guid GatewayId { get; set; }
 
 		// Type of credential
-		public string CredentialType { get; set; }
+		public string? CredentialType { get; set; }
 
 		// Credentials provided by user
-		public string[] Credentials {get; set;}
+		public string[]? Credentials {get; set;}
 
 		// Privacy level
-		public string PrivacyLevel { get; set; }
+		public string? PrivacyLevel { get; set; }
 		
 		// Type of datasource
-		public string DatasourceType { get; set; }
+		public string? DatasourceType { get; set; }
 
 		// Datasource Name provided by the user
-		public string DatasourceName { get; set; }
+		public string? DatasourceName { get; set; }
 
 		// Connection details for a datasource
-		public string ConnectionDetails { get; set; }
+		public string? ConnectionDetails { get; set; }
 	}
 }

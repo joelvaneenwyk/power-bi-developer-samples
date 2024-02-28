@@ -5,10 +5,11 @@
 
 namespace UserOwnsData.Controllers
 {
+	using Microsoft.AspNetCore.Authorization;
+	using Microsoft.AspNetCore.Mvc;
 	using System;
 	using System.Net;
 	using System.Security.Claims;
-	using System.Web.Mvc;
 	using UserOwnsData.Models;
 	using UserOwnsData.Services;
 	using UserOwnsData.Services.Security;

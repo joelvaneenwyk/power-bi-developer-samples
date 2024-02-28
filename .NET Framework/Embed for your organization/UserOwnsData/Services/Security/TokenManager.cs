@@ -5,10 +5,9 @@
 
 namespace UserOwnsData.Services.Security
 {
-	using Microsoft.Identity.Client;
-	using Microsoft.Owin.Security;
-	using Microsoft.Owin.Security.Cookies;
-	using Microsoft.Owin.Security.OpenIdConnect;
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Identity.Client;
 	using System.Configuration;
 	using System.Security.Claims;
 	using System.Web;
@@ -66,9 +65,11 @@ namespace UserOwnsData.Services.Security
 
 				// sign out and redirect to home page
 				string callbackUrl = redirectUri + "EmbedInfo/Embed";
-				HttpContext.Current.GetOwinContext().Authentication.SignOut(
-					new AuthenticationProperties { RedirectUri = callbackUrl },
-					OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType);
+
+				// #todo #jovaneen
+				//HttpContext.Current.GetOwinContext().Authentication.SignOut(
+				//	new AuthenticationProperties { RedirectUri = callbackUrl },
+				//	OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType);
 			}
 
 			// return null when token acquisition fails
