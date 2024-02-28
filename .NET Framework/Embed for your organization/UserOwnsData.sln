@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserOwnsData", "UserOwnsData\UserOwnsData.csproj", "{550BDA61-848F-4422-8E36-E13C82787B4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserOwnsData", "UserOwnsData\UserOwnsData.csproj", "{550BDA61-848F-4422-8E36-E13C82787B4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
