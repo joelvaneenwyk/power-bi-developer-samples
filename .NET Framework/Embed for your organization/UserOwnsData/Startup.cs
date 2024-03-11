@@ -5,8 +5,8 @@
 
 namespace UserOwnsData
 {
-    using Owin;
-    using UserOwnsData.Services.Security;
+	using Owin;
+	using UserOwnsData.Services.Security;
 
 	public class Startup
 	{
