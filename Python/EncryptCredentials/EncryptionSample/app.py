@@ -66,7 +66,7 @@ def update_datasource():
 
         # Validate the credentials data by the user
         data_validation_service = DataValidationService()
-        data_validation_service.validate_creds(request_data) 
+        data_validation_service.validate_creds(request_data)
 
         data_source_service = GetDatasourceService()
         gateway_api_response = data_source_service.get_gateway(access_token, gateway_id)
@@ -108,7 +108,7 @@ def add_datasource():
         # Validate the credentials data by the user
         data_validation_service = DataValidationService()
         data_validation_service.validate_add_data_source(request_data)
-        
+
         gateway_id = request_data['gatewayId']
 
         data_source_service = GetDatasourceService()
@@ -134,7 +134,7 @@ def add_datasource():
             return Response(api_response, api_response.status_code)
         else:
             return json.dumps({'errorMsg': str(f'Error {api_response.status_code} {api_response.reason}\nRequest Id:\t{api_response.headers.get("RequestId")}')}), api_response.status_code
-    
+
     except KeyError as tx:
         return json.dumps({'errorMsg': f'{str(tx)} not found'}), 400
     except ValueError as vx:
